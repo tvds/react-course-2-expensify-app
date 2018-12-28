@@ -22,14 +22,14 @@ module.exports = (env) => {
                     use: [
                         {
                             loader: 'css-loader',
-                            option: {
-                                soureceMap: true
+                            options: {
+                                sourceMap: true
                             },
-                        }
+                        },
                         {
-                            loader: 'sass-loader'
-                            option: {
-                                soureceMap: true
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
                             }
                         } 
                     ]
