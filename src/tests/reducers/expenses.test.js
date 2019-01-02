@@ -1,6 +1,14 @@
 import expenseReducer from '../../reducers/expenses';
 import expenses from '../fixtures/expenses';
 
+/* beforeEach((done) => {
+  const expensesData = {};
+  expenses.forEach(({ id, description, note, amount, createdAt}) => {
+    expensesData[id] = { description, note, amount, createdAt}
+  });
+  database.ref('expenses').set(expensesData).then(() => done());
+}) */
+
 test('should set default state', () => {
   const state = expenseReducer(undefined, {type: '@@INIR'});
   expect(state).toEqual([]);
@@ -64,4 +72,14 @@ test('should not edit expense if expense not found', () => {
   };
   const state = expenseReducer(expenses, action);
   expect(state).toEqual(expenses);
+});
+
+
+test('should set expenses', () => {
+  const action = {
+    type: 'SET_EXPENSES',
+    expenses: [expenses[1]]
+  };
+  const state = expenseReducer(expenses, action);
+  expect(state).toEqual([expenses[1]]);
 });
